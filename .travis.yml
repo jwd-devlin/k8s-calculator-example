@@ -16,3 +16,17 @@ after_success:
   - docker push wazzadevli0/multi-nginx
   - docker push wazzadevli0/multi-worker
   - docker push wazzadevli0/multi-server
+
+deploy:
+  edge: true
+  provider: elasticbeanstalk
+  region: us-west-2
+  app: docker-udemy-multi-docker
+  env: DockerUdemyMultiDocker-env
+  bucket_name: elasticbeanstalk-us-west-2-036392005668
+  bucket_path: docker-multi
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
+

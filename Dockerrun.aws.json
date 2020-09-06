@@ -1,0 +1,36 @@
+{
+  "AWSEDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name":"client",
+      "image": "wazzadevli0/multi-client",
+      "hostname": "client",
+      "essential": false
+    },
+    {
+      "name":"nginx",
+      "image": "wazzadevli0/multi-nginx",
+      "essential": true,
+      "portMappings":
+      [
+        {
+          "hostPort":  80,
+          "containerPort":  80
+        }
+      ],
+      "links": ["client", "server"]
+    },
+    {
+      "name":"worker",
+      "image": "wazzadevli0/multi-worker",
+      "hostname": "worker",
+      "essential": false
+    },
+    {
+      "name":"server",
+      "image": "wazzadevli0/multi-server",
+      "essential": false,
+      "hostname": "api"
+    }
+  ]
+}
