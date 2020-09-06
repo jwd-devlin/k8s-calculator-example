@@ -7,10 +7,10 @@ script:
   - docker run -e CI=true wazzadevli0/react-test npm test -- --coverage
 
 after_success:
-  - dockerbuild -t wazzadevli0/multi-client ./client-1
-  - dockerbuild -t wazzadevli0/multi-nginx ./nginx
-  - dockerbuild -t wazzadevli0/multi-worker ./worker
-  - dockerbuild -t wazzadevli0/multi-server ./server
+  - docker build -t wazzadevli0/multi-client ./client-1
+  - docker build -t wazzadevli0/multi-nginx ./nginx
+  - docker build -t wazzadevli0/multi-worker ./worker
+  - docker build -t wazzadevli0/multi-server ./server
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - docker push wazzadevli0/multi-client
   - docker push wazzadevli0/multi-nginx
