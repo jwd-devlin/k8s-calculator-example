@@ -1,6 +1,7 @@
-docker build -t wazzadevli0/multi-client:latest -t wazzadevli0/multi-client:$SHA ./client/Dockerfile ./client
-docker build -t wazzadevli0/multi-server:latest -t wazzadevli0/multi-server:$SHA ./server/Dockerfile ./server
-docker build -t wazzadevli0/multi-worker:latest -t wazzadevli0/multi-worker:$SHA ./worker/Dockerfile ./worker
+docker build -t wazzadevli0/multi-client:latest -t wazzadevli0/multi-client:$SHA -f ./client/Dockerfile ./client
+docker build -t wazzadevli0/multi-server:latest -t wazzadevli0/multi-server:$SHA -f ./server/Dockerfile ./server
+docker build -t wazzadevli0/multi-worker:latest -t wazzadevli0/multi-worker:$SHA -f ./worker/Dockerfile ./worker
+
 docker push wazzadevli0/multi-client:latest
 docker push wazzadevli0/multi-server:latest
 docker push wazzadevli0/multi-worker:latest
